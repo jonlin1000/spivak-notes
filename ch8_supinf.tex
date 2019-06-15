@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{ex}{Example}
+\newtheorem{axm}{Axiom}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}{Proposition}
+
+\title{Spivak Chapter 8: Least Upper Bounds, Defns}
+\date{\today}
+\author{Jonathan Lin}
+
+\begin{document}
+
+\maketitle
+
+In this chapter Spivak uses the least upper bound property (or termed the completeness property) of the real numbers to prove theorems such as the intermediate value theorem and the maximum value theorems seen in Chapter 7.
+
+\begin{defn}
+	A set $A$ of real numbers is called \textit{bounded above} if there exists some number $x$ such that $x \geq a$ for every $a \in A$.
+	Any number $x$ satisfying this property is called an \textit{upper bound} for $A$.
+\end{defn}
+
+Unpacking this definition, we can think about our set $A$ as a ``box'' of numbers. If we can find another number $x$ (which may or may not be in $A$) such that $x$ is greater than any number we pull out of $A$, then $x$ is an upper bound for $A$.
+
+A year ago, here is something I thought up which weakens the definition of this definition:
+
+\begin{defn}
+	A set $A$ of real numbers is called \textit{weakly bounded above} if there are only finitely many values $a$ in $A$ such that $x \leq a$
+	(I almost surely meant this!).
+\end{defn}
+
+Who knows, it might be useful for some application later.
+
+\begin{ex}
+	Here's a motivating example. Consider the set \[ S = \{x \mid 0 \leq x < 1\}.\]
+	Obviously $138$ or some number like that is an upper bound for $S$ so that $S$ is bounded above.
+	We would like to say something special about $1$, which is also an upper bound for the set, but the least such
+	number of all such upper bounds.
+\end{ex}
+
+\begin{defn}
+Suppose $A \subset \mathbb{R}$. We say $x$ is a least upper bound of $A$ if
+\begin{enumerate}
+	\item $x$ is an upper bound for $A$.
+	\item if $y$ is an upper bound for $A$, then we have that $x \leq y$.
+\end{enumerate}
+
+\end{defn}
+
+Continuing our analogy with $A$ as a box of numbers, the least upper bound is the smallest $x$ such that $x$ is an upper bound for $A$.
+
+Directly from the definition we can conclude something about the uniqueness of the least upper bound.
+\begin{prop}
+	$A$ has at most $1$ least upper bound.
+\end{prop}
+\begin{proof}
+	Suppose $x$ and $y$ are both least upper bounds for $A$. Then $x$ and $y$ are both upper bounds for $A$, hence it follows that $x \leq y$ and $y \leq x$, from which $x = y$. Hence the least upper bound is unique.
+\end{proof}
+
+Since the least upper bound is unique it makes sense to refer to it as \textit{the} least upper bound. We denote it $\sup{A}$, where $\sup$ denotes the \textit{supremum} of $A$. 
+Analogously we can define the greatest lower bound of $A$. This is denoted by $\inf{A}$ (the \textit{infimum} of A).
+
+Now here's a fundamental question: which sets have a least upper bound? It turns out this question is so closely tied to the properties of the real numbers that we can actually make it a fundamental axiom.
+
+\begin{axm}
+Suppose $A$ is a set of real numbers such that $A \neq \varnothing$ and $A$ is bounded above. Then $A$ has a least upper bound $\sup{A}$.
+\end{axm}
+
+This is a very important quality of the real numbers which is not present in other fields. For example, in $\mathbb{Q}$, the set $\{x \mid x^2 < 2\}$ is bounded above, but it has no least upper bound!
+
+Here is our first non-trivial example of how we can use the least upper bound to prove various theorems.
+
+\begin{thm} (The Intermediate Value Theorem)
+	Suppose $f$ is continuous on $[a, b]$ and $f(a) < 0 < f(b)$. Then there exists $x \in [a, b]$ such that $f(x) = 0$.
+\end{thm}
+\begin{proof}
+Define \[A = \{x \mid \text{f is negative on}~[a, x]\}.\] $A$ is clearly non-negative and bounded above, since $a \in A$ and $b$ is an upper bound for $A$ ($b \geq 0$). Hence $A$ has some least upper bound $\alpha$. We can also show through continuity arguments (the lemma in chapter 6) that it must be true that $a < \alpha < b$.
+
+We claim that $f(\alpha) = 0$. To show this suppose $f(\alpha) \neq 0$. If $f(\alpha) < 0$ then there is an interval $(\alpha - \delta, \alpha + \delta)$ for some positive $\delta$ such that $f$ is negative on this interval. There exists $x_0$ in $A$ such that $\alpha - \delta < x_0 \leq \alpha$, otherwise $\alpha$ would not be the least upper bound of $A$. In particular $f$ is negative on the interval $[a, x_0]$ since $x_0 \in A$. But since $f$ is negative in $(\alpha - \delta, \alpha + \delta)$ it follows that $f(\alpha)$ is actually negative, which is a contradiction.
+
+If $f(\alpha) > 0$ then there would be an interval $(\alpha - \delta, \alpha + \delta)$ for which $f$ is positive on this interval. It follows that there is some $x_0$ in $(\alpha - \delta, \alpha)$ such that $x_0 \in A$. But this is a contradiction since $f(x_0) > 0$. In conclusion we must have $f(\alpha) = 0$.
+\end{proof}
+\end{document}
