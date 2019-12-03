@@ -92,4 +92,10 @@ Suppose that $[0, 1]$ is countable. That is, there was some list $\{x_n\}$ of al
 
 By the nested interval theorem, the $I_n$ contain a unique point $x$. However, x is contained in the $I_n$, but none of the $x_i$ are contained in all of the $I_n$. In particular, $x_j \not\in I_j$ for all $j \in \mathbb{N}$. This is a contradiction, so it follows that $[0, 1]$ is uncountable.
 \end{proof}
+
+\section{The Rationals are Dense}
+
+Here we show the rational numbers are dense. Actually we show a stronger statement that the dyadic rational numbers of the form $k/2^n$ are dense in $\mathbb{R}$.
+
+How do we show this? We want to show that given any basic open neighborhood $(x - \varepsilon, x + \varepsilon)$ there exists some dyadic rational in this point. Assume $x$ is not itself a dyadic rational, else $x$ is a desired rational number of that form. Otherwise, there exists an integer $k$ such that $k < x < k + 1$. Let $\{I_n\}_{n = 0}^\infty$ be the bisection of $[k, k + 1]$ where the $I_n$ contain $x$. Clearly such $I_n$ are unambiguous because $x$ is not itself a dyadic rational and the endpoints of $I_n$ are. By the nested interval the intersection of the $I_n$ is a singular point. This point is $x$ by construction. If we let $I_n = [a_n, b_n]$, we have two sequences of \textbf{dyadic} rational numbers $\{a_n\}$ and $\{b_n\}$ which converge to $x$. It follows by definition of convergence of sequences that $(x - \varepsilon, x + \varepsilon)$ contains some $a_j$ so are are done.
 \end{document}
