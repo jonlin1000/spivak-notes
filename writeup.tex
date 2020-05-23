@@ -1,0 +1,31 @@
+\input{settings}
+
+\lhead{Solutions}
+\rhead{Jonathan Lin \\ solutions to problems \\ \today} 
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\begin{document}
+\begin{abstract}
+I write up problems that I didn't know how to do here.
+\end{abstract}
+
+\begin{problem}
+Show that 
+\[\lim_{n \to \infty}\frac{n}{a^n} = 0\] if $a > 1$.
+\end{problem}
+
+\begin{solution}
+Since $a > 1$, we can write $a = 1 + b$ for $b > 0$. By the binomial theorem we have that 
+\[a^n = (1 + b)^n > \frac{n(n-1)}{2}b^2.\]
+It follows that 
+\[\frac{n}{a^n} < \frac{1}{b^2(n-1)} \to 0,\]
+as desired.
+\end{solution}
+
+\begin{problem}
+Discuss the uniform convergence of $nz^n$ for $z \in \mathbb{C}$.
+\end{problem}
+\begin{solution}
+If $|z| \geq 1$ then $nz^n$ does not converge. If $|z| < 1$ then the considerations of Problem 1 imply that $nz^n \to 0$ as $n \to \infty$. Let $r < 1$. Problem 1 implies that $nz^n$ converges uniformly on $z < r$. 
+\end{solution}
+\end{document}
